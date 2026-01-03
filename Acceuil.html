@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NH Pâtisserie - Pâtisserie Orientale & Cake Design</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --rose: #FFB6C1;
+            --rose-fonce: #FF69B4;
+            --dore: #D4AF37;
+            --blanc: #FFFFFF;
+            --gris-clair: #F8F8F8;
+            --navy: #2C2853;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--blanc) 0%, var(--gris-clair) 100%);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            transition: transform 0.3s;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--navy);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--dore);
+            transition: width 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--rose-fonce);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            margin-top: 100px;
+            height: 90vh;
+            background: linear-gradient(135deg, var(--rose) 0%, var(--blanc) 50%, var(--dore) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: var(--blanc);
+            border-radius: 50%;
+            top: -100px;
+            right: -100px;
+            opacity: 0.3;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: var(--dore);
+            border-radius: 50%;
+            bottom: -150px;
+            left: -150px;
+            opacity: 0.2;
+        }
+
+        .hero-content {
+            z-index: 1;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: var(--navy);
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, var(--dore) 0%, var(--rose-fonce) 100%);
+            color: var(--blanc);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        section {
+            padding: 80px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            color: var(--navy);
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--rose-fonce), var(--dore));
+        }
+
+        .about {
+            background: var(--gris-clair);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 400px;
+            background: var(--dore);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--blanc);
+            font-size: 1.2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .gallery {
+            background: var(--blanc);
+        }
+
+        .gallery-categories {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            padding: 12px 30px;
+            background: var(--blanc);
+            border: 2px solid var(--rose);
+            color: var(--navy);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            background: linear-gradient(135deg, var(--rose) 0%, var(--dore) 100%);
+            color: var(--blanc);
+            border-color: var(--dore);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .gallery-item {
+            height: 350px;
+            background: var(--gris-clair);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .image-error {
+            color: #ff6b6b;
+            font-size: 0.9rem;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .contact {
+            background: linear-gradient(135deg, var(--rose) 0%, var(--blanc) 100%);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: var(--blanc);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--dore), var(--rose-fonce));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--blanc);
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-btn {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--rose-fonce), var(--dore));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--blanc);
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .social-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .contact-form {
+            background: var(--blanc);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--navy);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--rose);
+            border-radius: 8px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--dore);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        footer {
+            background: var(--navy);
+            color: var(--blanc);
+            text-align: center;
+            padding: 2rem 5%;
+        }
+
+        /* Modal Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            animation: zoomIn 0.3s ease;
+        }
+
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            font-size: 40px;
+            color: var(--blanc);
+            cursor: pointer;
+            background: var(--dore);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s;
+        }
+
+        .lightbox-close:hover {
+            transform: scale(1.1);
+            background: var(--rose-fonce);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 50px;
+            color: var(--blanc);
+            cursor: pointer;
+            background: var(--dore);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            user-select: none;
+        }
+
+        .lightbox-nav:hover {
+            background: var(--rose-fonce);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .lightbox-prev {
+            left: 20px;
+        }
+
+        .lightbox-next {
+            right: 20px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .gallery-item {
+            cursor: pointer;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ccircle cx='100' cy='100' r='95' fill='%232C2853'/%3E%3Ccircle cx='100' cy='100' r='85' fill='none' stroke='%23D4AF37' stroke-width='2'/%3E%3Ccircle cx='100' cy='100' r='75' fill='none' stroke='%23D4AF37' stroke-width='1' stroke-dasharray='2,4'/%3E%3Ctext x='100' y='95' text-anchor='middle' fill='%23D4AF37' font-size='45' font-family='serif' font-weight='bold' font-style='italic'%3ENH%3C/text%3E%3Ctext x='100' y='125' text-anchor='middle' fill='%23D4AF37' font-size='14' font-family='serif' letter-spacing='3'%3EPÂTISSERIE%3C/text%3E%3C/svg%3E" alt="NH Pâtisserie Logo" class="logo">
+            <ul>
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#about">À Propos</a></li>
+                <li><a href="#galerie">Galerie</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="accueil">
+        <div class="hero-content">
+            <h1>NH Pâtisserie</h1>
+            <p>L'art de la pâtisserie orientale & cake design</p>
+            <a href="#galerie" class="btn">Découvrir nos créations</a>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <h2 class="section-title">Notre Histoire</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>Bienvenue chez NH Pâtisserie, où la tradition orientale rencontre l'art moderne du cake design. Chaque création est le fruit d'un savoir-faire artisanal transmis de génération en génération.</p>
+                <p>Notre passion pour la pâtisserie se reflète dans chaque détail, chaque saveur et chaque texture. Nous créons des moments inoubliables à travers nos gâteaux personnalisés et nos délices orientaux authentiques.</p>
+                <p>De la pâtisserie traditionnelle aux créations sur mesure pour vos événements spéciaux, nous mettons tout notre cœur dans la réalisation de vos envies gourmandes.</p>
+            </div>
+            <div class="about-image" style="background-image: url('SnapInsta.to_552430665_18285680938278683_4905120867616405483_n_1080.jpg');">
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery" id="galerie">
+        <h2 class="section-title">Nos Créations</h2>
+        
+        <div class="gallery-categories">
+            <button class="category-btn active" onclick="filterGallery('presentation')">Présentation</button>
+            <button class="category-btn" onclick="filterGallery('enfants')">Gâteaux Enfants</button>
+            <button class="category-btn" onclick="filterGallery('orientale')">Pâtisserie Orientale</button>
+            <button class="category-btn" onclick="filterGallery('personnalisee')">Créations Personnalisées</button>
+        </div>
+
+        <div class="gallery-grid" id="galleryGrid"></div>
+    </section>
+
+    <section class="contact" id="contact">
+        <h2 class="section-title">Contactez-nous</h2>
+        <div class="contact-content">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <div>
+                        <h3>Téléphone</h3>
+                        <p>+33 X XX XX XX XX</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <div>
+                        <h3>Email</h3>
+                        <p>contact@nhpatisserie.fr</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div>
+                        <h3>Adresse</h3>
+                        <p>Seine-et-Marne (77)</p>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/nhpatisserie77/" target="_blank" class="social-btn" title="Instagram">📷</a>
+                </div>
+            </div>
+
+            <form class="contact-form" onsubmit="return handleSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Nom</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="btn">Envoyer</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 NH Pâtisserie - Tous droits réservés</p>
+        <p>Pâtisserie Orientale & Cake Design</p>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <span class="lightbox-nav lightbox-prev" onclick="changeImage(-1)">&#10094;</span>
+        <div class="lightbox-content">
+            <img class="lightbox-image" id="lightboxImage" src="" alt="">
+        </div>
+        <span class="lightbox-nav lightbox-next" onclick="changeImage(1)">&#10095;</span>
+    </div>
+
+    <script>
+        // ====================================================================
+        // CONFIGURATION DES IMAGES
+        // Ajoutez ici TOUS les noms de vos fichiers images (jpg, jpeg, webp, png)
+        // ====================================================================
+        const imageGallery = {
+            presentation: [
+                '472503467_18341053735197383_5225230198800284365_n.jpg',
+                '475572885_556196484118240_5330762457199111259_n.jpg',
+                '498335031_903876021863296_3106963192281097537_n.jpg',
+                '499968551_1057634746253149_2146313758566406681_n.jpg',
+                '501585646_738865668568450_2621582983194095412_n.jpg',
+                '502385647_1454414792215670_4579486768528205223_n.jpg',
+                '502744010_1048129436744151_5940196670870932684_n.jpg',
+                '502977258_1236666471300937_8952320967043796088_n.jpg',
+                '503569501_1267289545024079_2614377936097435452_n.jpg'
+            ],
+            enfants: [
+                '328505887_150486214469806_3380701232695089542_n.webp',
+                '329249358_6600938013254373_6623446393471527025_n.webp',
+                '331964498_1403967437074306_6351586905984845124_n.webp',
+                '324380696_563392312307382_4603825070768482934_n.webp',
+                '375073348_332670285812536_654363737612080004_n.webp',
+                '476617822_1017387296892776_2237202020292744064_n.jpg',
+                '491441217_610730332004663_5009892408451942854_n.jpg',
+                '491463430_1241894043944845_4855235738616433820_n.jpg',
+                '495022341_1720288348863008_2764491013569029038_n.jpg',
+                '496949990_1037031898526553_5061939888424004386_n.jpg',
+                '497857041_2135352580259817_6169693016975388619_n.jpg',
+                '498713873_1064657642226056_5145838342256441448_n.jpg',
+                '503402011_972340541480510_3252144263916475566_n.jpg'
+                
+            ],
+            orientale: [
+                '337589451_750655530006985_1318907089065806562_n.webp',
+                '342205477_6223959771030559_6512119179670081994_n.webp',
+                '494780661_18355008583197383_4404883063795256675_n.jpg',
+                '495662983_18355231957197383_1009806065397945494_n.webp',
+                '500074526_1048168933347500_8979613765371398276_n.jpg',
+                '500815651_2108432582969561_4193882203682056654_n.jpg',
+                '501963976_671820705614984_6962174224255756225_n.jpg',
+                '501972411_9637356839726263_4127196248169577301_n.jpg',
+                '502444721_4035969693340776_7948327233141242299_n.jpg',
+                '502948369_1218229322719925_8205836414718250762_n.jpg',
+                '503091386_995498409069698_8635440909016220677_n.jpg',
+                
+            ],
+            personnalisee: [
+                '332784114_1404555510291577_4670303227453667145_n.webp',
+                '471423518_18341649259197383_7065181039242083497_n.jpg',
+                '496546152_2469366846761908_4780066554014550874_n.jpg',
+                '502945733_563464346542522_3183241653387974902_n.jpg',
+                '517635877_18363371254197383_4164976023467969937_n.jpg'
+                
+            ]
+        };
+
+        let currentImages = [];
+        let currentImageIndex = 0;
+
+        // Génération automatique de la galerie
+        function loadGallery() {
+            const grid = document.getElementById('galleryGrid');
+            grid.innerHTML = '';
+
+            for (const [category, images] of Object.entries(imageGallery)) {
+                images.forEach((imageName, index) => {
+                    const item = document.createElement('div');
+                    item.className = 'gallery-item';
+                    item.setAttribute('data-category', category);
+                    item.style.display = category === 'presentation' ? 'flex' : 'none';
+
+                    const img = document.createElement('img');
+                    img.src = `images/${category}/${imageName}`;
+                    img.alt = `${category} ${index + 1}`;
+                    
+                    img.onerror = function() {
+                        this.parentElement.innerHTML = `<div class="image-error">❌ Image non trouvée:<br>${imageName}</div>`;
+                    };
+
+                    // Ajouter l'événement de clic pour ouvrir la lightbox
+                    item.onclick = function() {
+                        openLightbox(category, index);
+                    };
+
+                    item.appendChild(img);
+                    grid.appendChild(item);
+                });
+            }
+        }
+
+        // Ouvrir la lightbox
+        function openLightbox(category, imageIndex) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightboxImage');
+            
+            currentImages = imageGallery[category].map(name => `images/${category}/${name}`);
+            currentImageIndex = imageIndex;
+            
+            lightboxImage.src = currentImages[currentImageIndex];
+            lightbox.classList.add('active');
+            
+            // Empêcher le scroll du body
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Fermer la lightbox
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            
+            // Réactiver le scroll du body
+            document.body.style.overflow = 'auto';
+        }
+
+        // Changer d'image dans la lightbox
+        function changeImage(direction) {
+            currentImageIndex += direction;
+            
+            if (currentImageIndex < 0) {
+                currentImageIndex = currentImages.length - 1;
+            } else if (currentImageIndex >= currentImages.length) {
+                currentImageIndex = 0;
+            }
+            
+            const lightboxImage = document.getElementById('lightboxImage');
+            lightboxImage.src = currentImages[currentImageIndex];
+        }
+
+        // Fermer avec la touche Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            } else if (e.key === 'ArrowLeft') {
+                changeImage(-1);
+            } else if (e.key === 'ArrowRight') {
+                changeImage(1);
+            }
+        });
+
+        // Fermer en cliquant en dehors de l'image
+        document.getElementById('lightbox').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeLightbox();
+            }
+        });
+
+        function filterGallery(category) {
+            const items = document.querySelectorAll('.gallery-item');
+            const buttons = document.querySelectorAll('.category-btn');
+            
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            items.forEach(item => {
+                if (item.dataset.category === category) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert('Merci pour votre message ! Nous vous répondrons dans les plus brefs délais.');
+            event.target.reset();
+            return false;
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Chargement de la galerie au démarrage
+        window.addEventListener('DOMContentLoaded', loadGallery);
+    </script>
+</body>
+</html>
