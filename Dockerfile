@@ -5,7 +5,7 @@ FROM nginx:alpine
 COPY nginx.conf /etc/nginx/nginx.conf
 
 # Copier les fichiers du site web
-COPY Acceuil.html /usr/share/nginx/html/
+COPY index.html /usr/share/nginx/html/
 COPY images/ /usr/share/nginx/html/images/
 
 # Exposer le port 80
