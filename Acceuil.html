@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,7 +30,7 @@
 
         header {
             background: linear-gradient(135deg, var(--blanc) 0%, var(--gris-clair) 100%);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             position: fixed;
             width: 100%;
             top: 0;
@@ -43,6 +44,7 @@
             padding: 1rem 5%;
             max-width: 1400px;
             margin: 0 auto;
+            position: relative;
         }
 
         .logo {
@@ -50,31 +52,42 @@
             height: 80px;
             transition: transform 0.3s;
             z-index: 1001;
+            position: relative;
         }
 
         .logo:hover {
             transform: scale(1.05);
         }
 
-        /* Menu Hamburger */
         .menu-toggle {
-            display: flex;
+            display: flex !important;
             flex-direction: column;
             cursor: pointer;
             z-index: 1001;
+            position: relative;
+            padding: 8px;
+            background: transparent;
+            border: none;
+            border-radius: 5px;
         }
 
         .menu-toggle span {
-            width: 30px;
+            width: 28px;
             height: 3px;
             background: var(--navy);
-            margin: 4px 0;
+            margin: 3px 0;
             transition: all 0.3s;
-            border-radius: 3px;
+            border-radius: 2px;
+            display: block;
+        }
+
+        .menu-toggle:hover {
+            background: rgba(212, 175, 55, 0.2);
         }
 
         .menu-toggle.active span:nth-child(1) {
-            transform: rotate(45deg) translate(8px, 8px);
+            transform: rotate(45deg) translate(6.5px, 6.5px);
+            background: var(--rose-fonce);
         }
 
         .menu-toggle.active span:nth-child(2) {
@@ -82,7 +95,8 @@
         }
 
         .menu-toggle.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(8px, -8px);
+            transform: rotate(-45deg) translate(6.5px, -6.5px);
+            background: var(--rose-fonce);
         }
 
         nav ul {
@@ -99,7 +113,7 @@
             gap: 3rem;
             list-style: none;
             transition: right 0.4s ease;
-            box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
             z-index: 1000;
         }
 
@@ -118,10 +132,21 @@
             transform: translateX(0);
         }
 
-        nav ul.active li:nth-child(1) { transition-delay: 0.1s; }
-        nav ul.active li:nth-child(2) { transition-delay: 0.2s; }
-        nav ul.active li:nth-child(3) { transition-delay: 0.3s; }
-        nav ul.active li:nth-child(4) { transition-delay: 0.4s; }
+        nav ul.active li:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+
+        nav ul.active li:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+
+        nav ul.active li:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+
+        nav ul.active li:nth-child(4) {
+            transition-delay: 0.4s;
+        }
 
         nav a {
             text-decoration: none;
@@ -129,6 +154,7 @@
             font-weight: 500;
             transition: color 0.3s;
             position: relative;
+            font-size: 1.5rem;
         }
 
         nav a::after {
@@ -150,7 +176,6 @@
             width: 100%;
         }
 
-        /* Menu mobile - width ajusté */
         @media (max-width: 768px) {
             nav ul {
                 width: 70%;
@@ -202,7 +227,7 @@
             font-size: 4rem;
             color: var(--navy);
             margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .hero p {
@@ -220,12 +245,12 @@
             border-radius: 50px;
             font-weight: bold;
             transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
         .btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
 
         section {
@@ -318,17 +343,18 @@
             background: var(--gris-clair);
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
+            cursor: pointer;
         }
 
         .gallery-item:hover {
             transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
         .gallery-item img {
@@ -367,7 +393,7 @@
             background: var(--blanc);
             padding: 1.5rem;
             border-radius: 10px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
         }
 
         .contact-icon {
@@ -401,7 +427,7 @@
             text-decoration: none;
             font-weight: bold;
             transition: transform 0.3s;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
         .social-btn:hover {
@@ -412,7 +438,7 @@
             background: var(--blanc);
             padding: 2rem;
             border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
         }
 
         .form-group {
@@ -454,7 +480,6 @@
             padding: 2rem 5%;
         }
 
-        /* Modal Lightbox */
         .lightbox {
             display: none;
             position: fixed;
@@ -542,8 +567,13 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
         @keyframes zoomIn {
@@ -551,14 +581,11 @@
                 opacity: 0;
                 transform: scale(0.8);
             }
+
             to {
                 opacity: 1;
                 transform: scale(1);
             }
-        }
-
-        .gallery-item {
-            cursor: pointer;
         }
 
         @keyframes fadeInUp {
@@ -566,6 +593,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -595,15 +623,24 @@
         }
     </style>
 </head>
+
 <body>
     <header>
         <nav>
-            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ccircle cx='100' cy='100' r='95' fill='%232C2853'/%3E%3Ccircle cx='100' cy='100' r='85' fill='none' stroke='%23D4AF37' stroke-width='2'/%3E%3Ccircle cx='100' cy='100' r='75' fill='none' stroke='%23D4AF37' stroke-width='1' stroke-dasharray='2,4'/%3E%3Ctext x='100' y='95' text-anchor='middle' fill='%23D4AF37' font-size='45' font-family='serif' font-weight='bold' font-style='italic'%3ENH%3C/text%3E%3Ctext x='100' y='125' text-anchor='middle' fill='%23D4AF37' font-size='14' font-family='serif' letter-spacing='3'%3EPÂTISSERIE%3C/text%3E%3C/svg%3E" alt="NH Pâtisserie Logo" class="logo">
-            <ul>
-                <li><a href="#accueil">Accueil</a></li>
-                <li><a href="#about">À Propos</a></li>
-                <li><a href="#galerie">Galerie</a></li>
-                <li><a href="#contact">Contact</a></li>
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ccircle cx='100' cy='100' r='95' fill='%232C2853'/%3E%3Ccircle cx='100' cy='100' r='85' fill='none' stroke='%23D4AF37' stroke-width='2'/%3E%3Ccircle cx='100' cy='100' r='75' fill='none' stroke='%23D4AF37' stroke-width='1' stroke-dasharray='2,4'/%3E%3Ctext x='100' y='95' text-anchor='middle' fill='%23D4AF37' font-size='45' font-family='serif' font-weight='bold' font-style='italic'%3ENH%3C/text%3E%3Ctext x='100' y='125' text-anchor='middle' fill='%23D4AF37' font-size='14' font-family='serif' letter-spacing='3'%3EPÂTISSERIE%3C/text%3E%3C/svg%3E"
+                alt="NH Pâtisserie Logo" class="logo">
+
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <ul id="navMenu">
+                <li><a href="#accueil" onclick="closeMenu()">Accueil</a></li>
+                <li><a href="#about" onclick="closeMenu()">À Propos</a></li>
+                <li><a href="#galerie" onclick="closeMenu()">Galerie</a></li>
+                <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -620,16 +657,20 @@
         <h2 class="section-title">Notre Histoire</h2>
         <div class="about-content">
             <div class="about-text">
-                <p>Bienvenue chez NH Pâtisserie, où la tradition orientale rencontre l'art moderne du cake design. Chaque création est le fruit d'un savoir-faire artisanal transmis de génération en génération.</p>
-                <p>Notre passion pour la pâtisserie se reflète dans chaque détail, chaque saveur et chaque texture. Nous créons des moments inoubliables à travers nos gâteaux personnalisés et nos délices orientaux authentiques.</p>
-                <p>De la pâtisserie traditionnelle aux créations sur mesure pour vos événements spéciaux, nous mettons tout notre cœur dans la réalisation de vos envies gourmandes.</p>
+                <p>Bienvenue chez NH Pâtisserie, où la tradition orientale rencontre l'art moderne du cake design.
+                    Chaque création est le fruit d'un savoir-faire artisanal transmis de génération en génération.</p>
+                <p>Notre passion pour la pâtisserie se reflète dans chaque détail, chaque saveur et chaque texture. Nous
+                    créons des moments inoubliables à travers nos gâteaux personnalisés et nos délices orientaux
+                    authentiques.</p>
+                <p>De la pâtisserie traditionnelle aux créations sur mesure pour vos événements spéciaux, nous mettons
+                    tout notre cœur dans la réalisation de vos envies gourmandes.</p>
             </div>
         </div>
     </section>
 
     <section class="gallery" id="galerie">
         <h2 class="section-title">Nos Créations</h2>
-        
+
         <div class="gallery-categories">
             <button class="category-btn active" onclick="filterGallery('presentation')">Présentation</button>
             <button class="category-btn" onclick="filterGallery('enfants')">Gâteaux Enfants</button>
@@ -666,7 +707,8 @@
                     </div>
                 </div>
                 <div class="social-links">
-                    <a href="https://www.instagram.com/nhpatisserie77/" target="_blank" class="social-btn" title="Instagram">📷 nhpatisserie77</a>
+                    <a href="https://www.instagram.com/nhpatisserie77/" target="_blank" class="social-btn"
+                        title="Instagram">📷</a>
                 </div>
             </div>
 
@@ -693,7 +735,6 @@
         <p>Pâtisserie Orientale & Cake Design</p>
     </footer>
 
-    <!-- Lightbox Modal -->
     <div class="lightbox" id="lightbox">
         <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
         <span class="lightbox-nav lightbox-prev" onclick="changeImage(-1)">&#10094;</span>
@@ -704,10 +745,6 @@
     </div>
 
     <script>
-        // ====================================================================
-        // CONFIGURATION DES IMAGES
-        // Ajoutez ici TOUS les noms de vos fichiers images (jpg, jpeg, webp, png)
-        // ====================================================================
         const imageGallery = {
             presentation: [
                 '472503467_18341053735197383_5225230198800284365_n.jpg',
@@ -760,7 +797,6 @@
         let currentImages = [];
         let currentImageIndex = 0;
 
-        // Toggle menu hamburger
         function toggleMenu() {
             const menu = document.getElementById('navMenu');
             const toggle = document.querySelector('.menu-toggle');
@@ -768,7 +804,6 @@
             toggle.classList.toggle('active');
         }
 
-        // Fermer le menu
         function closeMenu() {
             const menu = document.getElementById('navMenu');
             const toggle = document.querySelector('.menu-toggle');
@@ -776,7 +811,6 @@
             toggle.classList.remove('active');
         }
 
-        // Génération automatique de la galerie
         function loadGallery() {
             const grid = document.getElementById('galleryGrid');
             grid.innerHTML = '';
@@ -791,13 +825,12 @@
                     const img = document.createElement('img');
                     img.src = `images/${category}/${imageName}`;
                     img.alt = `${category} ${index + 1}`;
-                    
-                    img.onerror = function() {
+
+                    img.onerror = function () {
                         this.parentElement.innerHTML = `<div class="image-error">❌ Image non trouvée:<br>${imageName}</div>`;
                     };
 
-                    // Ajouter l'événement de clic pour ouvrir la lightbox
-                    item.onclick = function() {
+                    item.onclick = function () {
                         openLightbox(category, index);
                     };
 
@@ -807,69 +840,46 @@
             }
         }
 
-        // Ouvrir la lightbox
         function openLightbox(category, imageIndex) {
             const lightbox = document.getElementById('lightbox');
             const lightboxImage = document.getElementById('lightboxImage');
-            
+
             currentImages = imageGallery[category].map(name => `images/${category}/${name}`);
             currentImageIndex = imageIndex;
-            
+
             lightboxImage.src = currentImages[currentImageIndex];
             lightbox.classList.add('active');
-            
-            // Empêcher le scroll du body
+
             document.body.style.overflow = 'hidden';
         }
 
-        // Fermer la lightbox
         function closeLightbox() {
             const lightbox = document.getElementById('lightbox');
             lightbox.classList.remove('active');
-            
-            // Réactiver le scroll du body
+
             document.body.style.overflow = 'auto';
         }
 
-        // Changer d'image dans la lightbox
         function changeImage(direction) {
             currentImageIndex += direction;
-            
+
             if (currentImageIndex < 0) {
                 currentImageIndex = currentImages.length - 1;
             } else if (currentImageIndex >= currentImages.length) {
                 currentImageIndex = 0;
             }
-            
+
             const lightboxImage = document.getElementById('lightboxImage');
             lightboxImage.src = currentImages[currentImageIndex];
         }
 
-        // Fermer avec la touche Escape
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeLightbox();
-            } else if (e.key === 'ArrowLeft') {
-                changeImage(-1);
-            } else if (e.key === 'ArrowRight') {
-                changeImage(1);
-            }
-        });
-
-        // Fermer en cliquant en dehors de l'image
-        document.getElementById('lightbox').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeLightbox();
-            }
-        });
-
         function filterGallery(category) {
             const items = document.querySelectorAll('.gallery-item');
             const buttons = document.querySelectorAll('.category-btn');
-            
+
             buttons.forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
-            
+
             items.forEach(item => {
                 if (item.dataset.category === category) {
                     item.style.display = 'flex';
@@ -886,6 +896,22 @@
             return false;
         }
 
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            } else if (e.key === 'ArrowLeft') {
+                changeImage(-1);
+            } else if (e.key === 'ArrowRight') {
+                changeImage(1);
+            }
+        });
+
+        document.getElementById('lightbox').addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeLightbox();
+            }
+        });
+
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -899,8 +925,8 @@
             });
         });
 
-        // Chargement de la galerie au démarrage
         window.addEventListener('DOMContentLoaded', loadGallery);
     </script>
 </body>
+
 </html>
